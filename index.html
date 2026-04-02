@@ -72,6 +72,14 @@ h1{
 
 h2{color:#ff8c00;margin-bottom:15px;}
 
+/* главный проект */
+.main-project video{
+    width:100%;
+    border-radius:15px;
+    margin-top:15px;
+    border:1px solid rgba(255,140,0,0.3);
+}
+
 /* проекты */
 .projects{
     display:grid;
@@ -84,11 +92,6 @@ h2{color:#ff8c00;margin-bottom:15px;}
     padding:15px;
     border-radius:12px;
     border:1px solid rgba(255,140,0,0.2);
-}
-
-.project-title{
-    color:#ffa500;
-    margin-bottom:5px;
 }
 
 /* отзывы */
@@ -115,7 +118,7 @@ h2{color:#ff8c00;margin-bottom:15px;}
 }
 
 .name{color:#ffa500;font-weight:bold;}
-.stars{color:#ffa500;font-size:14px;}
+.stars{color:#ffa500;}
 
 .price{
     font-size:32px;
@@ -153,41 +156,35 @@ h2{color:#ff8c00;margin-bottom:15px;}
 <p>Быстро. Чётко. Без лишнего шума. Разбираюсь и делаю.</p>
 </div>
 
+<!-- ГЛАВНЫЙ ПРОЕКТ -->
+<div class="card main-project">
+<h2>🔥 SCREENREC 3D</h2>
+<p>
+Мой кастомный инструмент для записи экрана в кибер-стиле.<br><br>
+✔ запись экрана + микрофон<br>
+✔ выбор области<br>
+✔ минималистичный UI<br>
+✔ быстрый запуск и контроль<br>
+</p>
+
+<video controls>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+</div>
+
 <!-- ПРОЕКТЫ -->
 <div class="card">
-<h2>🛠️ Мои проекты</h2>
+<h2>🛠️ Другие проекты</h2>
 
 <div class="projects">
 
-<div class="project">
-<div class="project-title">EXE сборка</div>
-<p>Создание .exe из Python с иконкой</p>
-</div>
-
-<div class="project">
-<div class="project-title">GUI программы</div>
-<p>Приложения на PyQt5</p>
-</div>
-
-<div class="project">
-<div class="project-title">OSINT</div>
-<p>Поиск аккаунтов (аналог Sherlock)</p>
-</div>
-
-<div class="project">
-<div class="project-title">Electron</div>
-<p>Браузеры и десктоп-приложения</p>
-</div>
-
-<div class="project">
-<div class="project-title">Стеганография</div>
-<p>Скрытие файлов в изображениях</p>
-</div>
-
-<div class="project">
-<div class="project-title">UI кастом</div>
-<p>Курсоры, темы, интерфейсы</p>
-</div>
+<div class="project">EXE сборка Python</div>
+<div class="project">GUI приложения PyQt5</div>
+<div class="project">OSINT / Sherlock</div>
+<div class="project">Electron браузеры</div>
+<div class="project">Стеганография</div>
+<div class="project">Кастом интерфейсы</div>
 
 </div>
 </div>
@@ -195,7 +192,7 @@ h2{color:#ff8c00;margin-bottom:15px;}
 <!-- YOUTUBE -->
 <div class="card">
 <h2>📺 YouTube</h2>
-<a href="https://www.youtube.com/@goodhacker1" class="btn">Перейти на канал</a>
+<a href="https://www.youtube.com/@goodhacker1" class="btn">Перейти</a>
 </div>
 
 <!-- ОТЗЫВЫ -->
@@ -218,16 +215,7 @@ h2{color:#ff8c00;margin-bottom:15px;}
 <div>
 <div class="name">Марина</div>
 <div class="stars">★★★★★</div>
-<p>Починил проект за 1 час. Очень быстро.</p>
-</div>
-</div>
-
-<div class="review">
-<img src="https://randomuser.me/api/portraits/men/76.jpg">
-<div>
-<div class="name">Дмитрий</div>
-<div class="stars">★★★★★</div>
-<p>Реально шарит. За 5$ делает больше, чем другие.</p>
+<p>Очень быстро и чётко. Рекомендую.</p>
 </div>
 </div>
 
