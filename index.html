@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Дневник доброго хакера</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at top, #0b0b0b, #000000);
+    color: #e5e5e5;
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+}
+
+/* фон с мягким движением */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255,140,0,0.05) 0px,
+        rgba(255,140,0,0.05) 1px,
+        transparent 1px,
+        transparent 40px
+    );
+    animation: moveBg 20s linear infinite;
+}
+
+@keyframes moveBg {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+    color: #ff8c00;
+    text-shadow: 0 0 20px #ff8c00;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    opacity: 0.7;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: rgba(255,140,0,0.04);
+    border: 1px solid rgba(255,140,0,0.25);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 25px rgba(255,140,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 40px rgba(255,140,0,0.25);
+}
+
+h2 {
+    color: #ff8c00;
+    margin-bottom: 15px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 6px 12px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,140,0,0.3);
+    background: rgba(255,140,0,0.08);
+    font-size: 14px;
+}
+
+.price {
+    font-size: 32px;
+    color: #ffa500;
+    text-shadow: 0 0 10px #ffa500;
+}
+
+.telegram-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #000;
+    background: linear-gradient(45deg, #ff8c00, #ffa500);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.telegram-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff8c00;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    opacity: 0.5;
+}
+
+/* печатающийся текст */
+.typing {
+    border-right: 2px solid #ff8c00;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4s steps(40, end) forwards, blink 1s infinite;
+}
+
+@keyframes typing {
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🧠 Дневник доброго хакера</h1>
+    <div class="subtitle typing">голубоглазый тоннель // я разбираюсь и делаю</div>
+
+    <div class="card">
+        <h2>⚡ Обо мне</h2>
+        <p>
+        Я не просто пишу код — я собираю решения.<br><br>
+        Быстро. Чётко. Без лишнего шума.<br><br>
+        Люблю разбираться в системах, ломать, чинить и делать лучше.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🛠️ Мои работы</h2>
+        <div class="tags">
+            <div class="tag">EXE из Python</div>
+            <div class="tag">PyQt5 GUI</div>
+            <div class="tag">OSINT</div>
+            <div class="tag">Sherlock</div>
+            <div class="tag">Proxy / сети</div>
+            <div class="tag">Electron</div>
+            <div class="tag">Vite</div>
+            <div class="tag">Стеганография</div>
+            <div class="tag">UI кастом</div>
+            <div class="tag">Курсоры</div>
+            <div class="tag">Nebula OS</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🧩 Подход</h2>
+        <p>
+        • Быстро<br>
+        • Без воды<br>
+        • Решаю задачи, а не обсуждаю их<br>
+        • Довожу до результата
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>💰 Цена</h2>
+        <div class="price">Любая задача — 5$</div>
+    </div>
+
+    <div class="card">
+        <h2>📡 Связь</h2>
+        <p>Telegram: @hackpack1977</p>
+        <a href="https://t.me/hackpack1977" class="telegram-btn">Написать</a>
+    </div>
+
+    <div class="footer">
+        <p>не идеальный // но сделаю</p>
+    </div>
+
+</div>
+
+</body>
+</html>
