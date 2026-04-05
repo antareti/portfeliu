@@ -34,7 +34,7 @@ body{
     transition:0.4s;
 }
 
-/* background grid */
+/* grid */
 body::before{
     content:"";
     position:fixed;
@@ -56,7 +56,6 @@ body::before{
     to{transform:translateY(-200px);}
 }
 
-/* container */
 .container{
     max-width:1000px;
     margin:auto;
@@ -65,14 +64,12 @@ body::before{
     z-index:2;
 }
 
-/* logo */
 .logo{
     display:block;
     margin:0 auto 20px;
     max-width:170px;
 }
 
-/* title */
 h1{
     text-align:center;
     font-family:'Orbitron';
@@ -87,7 +84,6 @@ h1{
     margin-bottom:10px;
 }
 
-/* cards */
 .card{
     background:var(--card);
     border:1px solid rgba(255,140,0,0.2);
@@ -95,19 +91,6 @@ h1{
     padding:25px;
     margin:20px 0;
     backdrop-filter:blur(15px);
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-}
-
-/* video */
-video{
-    width:100%;
-    border-radius:15px;
-    margin-top:15px;
-    border:1px solid rgba(255,140,0,0.3);
 }
 
 /* projects */
@@ -124,7 +107,7 @@ video{
     border:1px solid rgba(255,140,0,0.2);
 }
 
-/* REVIEWS */
+/* static reviews */
 .reviews{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -138,11 +121,6 @@ video{
     padding:15px;
     border-radius:15px;
     border:1px solid rgba(255,140,0,0.2);
-    transition:0.3s;
-}
-
-.review:hover{
-    transform:translateY(-5px);
 }
 
 .review img{
@@ -155,7 +133,59 @@ video{
 .name{color:#ffa500;font-weight:bold;}
 .stars{color:#ffa500;}
 
-/* button */
+/* CHAT LIVE REVIEWS */
+.chat{
+    margin-top:20px;
+    background:#0f0f0f;
+    border-radius:14px;
+    padding:15px;
+    border:1px solid rgba(255,140,0,0.2);
+    max-height:260px;
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.msg{
+    max-width:75%;
+    padding:10px 12px;
+    border-radius:12px;
+    opacity:0;
+    transform:translateY(10px);
+}
+
+.msg.show{
+    animation:pop 0.35s ease forwards;
+}
+
+@keyframes pop{
+    to{opacity:1;transform:translateY(0);}
+}
+
+.me{
+    align-self:flex-end;
+    background:#ff8c00;
+    color:#000;
+}
+
+.them{
+    align-self:flex-start;
+    background:#1e1e1e;
+    border:1px solid rgba(255,140,0,0.25);
+}
+
+.cursor{
+    display:inline-block;
+    width:8px;
+    background:#ff8c00;
+    margin-left:2px;
+    animation:blink 0.8s infinite;
+}
+
+@keyframes blink{50%{opacity:0;}}
+
+/* buttons */
 .btn{
     display:inline-block;
     padding:12px 18px;
@@ -164,15 +194,8 @@ video{
     border-radius:10px;
     text-decoration:none;
     font-weight:bold;
-    transition:0.3s;
 }
 
-.btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 25px var(--accent);
-}
-
-/* fixed */
 .fixed{
     position:fixed;
     bottom:20px;
@@ -182,33 +205,7 @@ video{
     padding:12px 18px;
     border-radius:50px;
     font-weight:bold;
-    text-decoration:none;
-    z-index:999;
 }
-
-/* terminal */
-.terminal{
-    display:none;
-    position:fixed;
-    top:0;left:0;
-    width:100%;
-    height:100%;
-    background:#000;
-    color:#00ff88;
-    padding:20px;
-    font-family:monospace;
-    z-index:9999;
-}
-
-.terminal.active{
-    display:block;
-}
-
-.cursor{
-    animation:blink 1s infinite;
-}
-
-@keyframes blink{50%{opacity:0;}}
 
 .topbar{
     position:fixed;
@@ -237,15 +234,6 @@ video{
 <button onclick="toggleTerminal()">💻</button>
 </div>
 
-<!-- TERMINAL -->
-<div class="terminal" id="terminal">
-root@system:~$ loading profile...<br>
-access granted ✔<br>
-identity: good hacker<br>
-status: active<br><br>
-root@system:~$ <span class="cursor">█</span>
-</div>
-
 <div class="container">
 
 <img src="o.png" class="logo">
@@ -258,12 +246,10 @@ root@system:~$ <span class="cursor">█</span>
 <p>Чётко. Быстро. Без шума.</p>
 </div>
 
-<!-- VIDEO (ВОЗВРАЩЕНО) -->
 <div class="card">
 <h2>🔥 SCREENREC 3D</h2>
-<p>Кастомные инструменты и автоматизация.</p>
-<video controls poster="preview.jpg">
-    <source src="video.mp4" type="video/mp4">
+<video controls width="100%">
+<source src="video.mp4">
 </video>
 </div>
 
@@ -274,16 +260,13 @@ root@system:~$ <span class="cursor">█</span>
 <div class="project">GUI приложения</div>
 <div class="project">OSINT</div>
 <div class="project">Автоматизация</div>
-<div class="project">Стеганография</div>
-<div class="project">Нестандартные решения 🔒</div>
 </div>
 </div>
 
-<!-- ОТЗЫВЫ (ВОЗВРАЩЕНО) -->
+<!-- STATIC REVIEWS -->
 <div class="card">
-<h2>💬 Отзывы</h2>
+<h2>💬 Отзывы (обычные)</h2>
 <div class="reviews">
-
 <div class="review">
 <img src="https://randomuser.me/api/portraits/men/32.jpg">
 <div>
@@ -292,17 +275,11 @@ root@system:~$ <span class="cursor">█</span>
 <p>Сделал всё за вечер. Работает идеально.</p>
 </div>
 </div>
-
-<div class="review">
-<img src="https://randomuser.me/api/portraits/women/44.jpg">
-<div>
-<div class="name">Марина</div>
-<div class="stars">★★★★★</div>
-<p>Очень быстро и чётко. Рекомендую.</p>
-</div>
 </div>
 
-</div>
+<!-- LIVE CHAT REVIEWS -->
+<h2 style="margin-top:25px;">💬 Live чат-отзывы</h2>
+<div class="chat" id="chat"></div>
 </div>
 
 <div class="card">
@@ -320,15 +297,64 @@ root@system:~$ <span class="cursor">█</span>
 <a class="fixed" href="https://t.me/hackpack1977">💬 Написать</a>
 
 <script>
-// theme
 function toggleTheme(){
     document.body.classList.toggle("light");
 }
 
-// terminal
 function toggleTerminal(){
-    document.getElementById("terminal").classList.toggle("active");
+    alert("terminal mode (заглушка)");
 }
+
+/* LIVE CHAT */
+const reviews = [
+    {t:"them", text:"Это реально работает?"},
+    {t:"me", text:"Да, всё стабильно."},
+    {t:"them", text:"Я не ожидал такого результата 🔥"},
+    {t:"me", text:"Делаю качественно."},
+    {t:"them", text:"Заказал ещё один проект 💯"}
+];
+
+let i = 0;
+
+function typeText(text, el, cb){
+    let j = 0;
+
+    const cursor = document.createElement("span");
+    cursor.className = "cursor";
+    el.appendChild(cursor);
+
+    function step(){
+        if(j < text.length){
+            cursor.insertAdjacentText("beforebegin", text[j++]);
+            setTimeout(step, 25);
+        } else {
+            cursor.remove();
+            cb();
+        }
+    }
+
+    step();
+}
+
+function addMsg(){
+    if(i >= reviews.length) return;
+
+    const msg = document.createElement("div");
+    msg.className = "msg " + reviews[i].t;
+
+    const chat = document.getElementById("chat");
+    chat.appendChild(msg);
+
+    setTimeout(()=>msg.classList.add("show"), 50);
+
+    typeText(reviews[i].text, msg, ()=>{
+        chat.scrollTop = chat.scrollHeight;
+        i++;
+        setTimeout(addMsg, 900);
+    });
+}
+
+addMsg();
 </script>
 
 </body>
