@@ -34,7 +34,7 @@ body{
     transition:0.4s;
 }
 
-/* GRID BACKGROUND */
+/* background grid */
 body::before{
     content:"";
     position:fixed;
@@ -50,9 +50,13 @@ body::before{
     animation:move 25s linear infinite;
     z-index:0;
 }
-@keyframes move{from{transform:translateY(0);}to{transform:translateY(-200px);}}
 
-/* CONTAINER */
+@keyframes move{
+    from{transform:translateY(0);}
+    to{transform:translateY(-200px);}
+}
+
+/* container */
 .container{
     max-width:1000px;
     margin:auto;
@@ -61,22 +65,20 @@ body::before{
     z-index:2;
 }
 
-/* LOGO */
+/* logo */
 .logo{
     display:block;
     margin:0 auto 20px;
     max-width:170px;
-    animation:fade 1s ease;
 }
 
-/* TITLE */
+/* title */
 h1{
     text-align:center;
     font-family:'Orbitron';
     font-size:48px;
     color:var(--accent);
     text-shadow:0 0 20px var(--accent);
-    animation:fadeUp 1s ease;
 }
 
 .subtitle{
@@ -85,7 +87,7 @@ h1{
     margin-bottom:10px;
 }
 
-/* CARDS */
+/* cards */
 .card{
     background:var(--card);
     border:1px solid rgba(255,140,0,0.2);
@@ -94,14 +96,13 @@ h1{
     margin:20px 0;
     backdrop-filter:blur(15px);
     transition:0.3s;
-    animation:fadeUp 0.8s ease both;
 }
 
 .card:hover{
     transform:translateY(-5px);
 }
 
-/* VIDEO */
+/* video */
 video{
     width:100%;
     border-radius:15px;
@@ -109,7 +110,52 @@ video{
     border:1px solid rgba(255,140,0,0.3);
 }
 
-/* BUTTON */
+/* projects */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.project{
+    background:#111;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid rgba(255,140,0,0.2);
+}
+
+/* REVIEWS */
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.review{
+    display:flex;
+    gap:15px;
+    background:#111;
+    padding:15px;
+    border-radius:15px;
+    border:1px solid rgba(255,140,0,0.2);
+    transition:0.3s;
+}
+
+.review:hover{
+    transform:translateY(-5px);
+}
+
+.review img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:2px solid #ff8c00;
+}
+
+.name{color:#ffa500;font-weight:bold;}
+.stars{color:#ffa500;}
+
+/* button */
 .btn{
     display:inline-block;
     padding:12px 18px;
@@ -126,7 +172,7 @@ video{
     box-shadow:0 0 25px var(--accent);
 }
 
-/* FIXED BUTTON */
+/* fixed */
 .fixed{
     position:fixed;
     bottom:20px;
@@ -140,26 +186,7 @@ video{
     z-index:999;
 }
 
-/* TOP BUTTONS */
-.topbar{
-    position:fixed;
-    top:15px;
-    right:15px;
-    display:flex;
-    gap:10px;
-    z-index:999;
-}
-
-.topbar button{
-    padding:10px;
-    border-radius:10px;
-    border:1px solid var(--accent);
-    background:#111;
-    color:#fff;
-    cursor:pointer;
-}
-
-/* TERMINAL */
+/* terminal */
 .terminal{
     display:none;
     position:fixed;
@@ -183,12 +210,23 @@ video{
 
 @keyframes blink{50%{opacity:0;}}
 
-/* ANIMATIONS */
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
+.topbar{
+    position:fixed;
+    top:15px;
+    right:15px;
+    display:flex;
+    gap:10px;
+    z-index:999;
 }
-@keyframes fade{from{opacity:0;}to{opacity:1;}}
+
+.topbar button{
+    padding:10px;
+    border-radius:10px;
+    border:1px solid var(--accent);
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+}
 </style>
 </head>
 
@@ -199,12 +237,12 @@ video{
 <button onclick="toggleTerminal()">💻</button>
 </div>
 
+<!-- TERMINAL -->
 <div class="terminal" id="terminal">
-root@system:~$ loading profile...
-<br>access granted ✔
-<br>identity: good hacker
-<br>status: active
-<br><br>
+root@system:~$ loading profile...<br>
+access granted ✔<br>
+identity: good hacker<br>
+status: active<br><br>
 root@system:~$ <span class="cursor">█</span>
 </div>
 
@@ -220,6 +258,7 @@ root@system:~$ <span class="cursor">█</span>
 <p>Чётко. Быстро. Без шума.</p>
 </div>
 
+<!-- VIDEO (ВОЗВРАЩЕНО) -->
 <div class="card">
 <h2>🔥 SCREENREC 3D</h2>
 <p>Кастомные инструменты и автоматизация.</p>
@@ -230,7 +269,40 @@ root@system:~$ <span class="cursor">█</span>
 
 <div class="card">
 <h2>🛠 Проекты</h2>
-<p>EXE / GUI / OSINT / Automation / Stego</p>
+<div class="projects">
+<div class="project">EXE сборка Python</div>
+<div class="project">GUI приложения</div>
+<div class="project">OSINT</div>
+<div class="project">Автоматизация</div>
+<div class="project">Стеганография</div>
+<div class="project">Нестандартные решения 🔒</div>
+</div>
+</div>
+
+<!-- ОТЗЫВЫ (ВОЗВРАЩЕНО) -->
+<div class="card">
+<h2>💬 Отзывы</h2>
+<div class="reviews">
+
+<div class="review">
+<img src="https://randomuser.me/api/portraits/men/32.jpg">
+<div>
+<div class="name">Алексей</div>
+<div class="stars">★★★★★</div>
+<p>Сделал всё за вечер. Работает идеально.</p>
+</div>
+</div>
+
+<div class="review">
+<img src="https://randomuser.me/api/portraits/women/44.jpg">
+<div>
+<div class="name">Марина</div>
+<div class="stars">★★★★★</div>
+<p>Очень быстро и чётко. Рекомендую.</p>
+</div>
+</div>
+
+</div>
 </div>
 
 <div class="card">
