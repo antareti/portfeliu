@@ -6,39 +6,35 @@
 
 <title>Дневник доброго хакера</title>
 
+<link rel="icon" type="image/png" href="o.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --bg:#050505;
+    --text:#e5e5e5;
+    --accent:#ff8c00;
+    --card:rgba(255,140,0,0.04);
+}
+
+body.light{
+    --bg:#f4f4f4;
+    --text:#111;
+    --card:rgba(0,0,0,0.06);
+}
+
 *{margin:0;padding:0;box-sizing:border-box;}
 
-html{scroll-behavior:smooth;}
-
 body{
-    background: radial-gradient(circle at top, #0b0b0b, #000);
-    color:#e5e5e5;
+    background:var(--bg);
+    color:var(--text);
     font-family:'JetBrains Mono', monospace;
+    overflow-x:hidden;
+    transition:0.4s;
 }
 
-/* loader */
-#loader{
-    position:fixed;
-    width:0;
-    height:3px;
-    background:#ff8c00;
-    z-index:9999;
-    animation:load 1.5s ease forwards;
-}
-@keyframes load{from{width:0;}to{width:100%;}}
-
-/* particles */
-#particles-js{
-    position:fixed;
-    width:100%;
-    height:100%;
-    z-index:0;
-}
-
-/* фон */
+/* GRID BACKGROUND */
 body::before{
     content:"";
     position:fixed;
@@ -51,13 +47,12 @@ body::before{
         transparent 1px,
         transparent 40px
     );
-    animation:moveBg 20s linear infinite;
+    animation:move 25s linear infinite;
+    z-index:0;
 }
-@keyframes moveBg {
-    from{transform:translateY(0);}
-    to{transform:translateY(-200px);}
-}
+@keyframes move{from{transform:translateY(0);}to{transform:translateY(-200px);}}
 
+/* CONTAINER */
 .container{
     max-width:1000px;
     margin:auto;
@@ -66,272 +61,202 @@ body::before{
     z-index:2;
 }
 
-/* ЛОГО */
+/* LOGO */
 .logo{
     display:block;
-    margin:0 auto 20px auto;
-    max-width:180px;
+    margin:0 auto 20px;
+    max-width:170px;
+    animation:fade 1s ease;
 }
 
+/* TITLE */
 h1{
+    text-align:center;
     font-family:'Orbitron';
     font-size:48px;
-    color:#ff8c00;
-    text-shadow:0 0 20px #ff8c00;
-    text-align:center;
+    color:var(--accent);
+    text-shadow:0 0 20px var(--accent);
+    animation:fadeUp 1s ease;
 }
 
 .subtitle{
-    margin-bottom:10px;
+    text-align:center;
     opacity:0.7;
-    text-align:center;
+    margin-bottom:10px;
 }
 
-#typing{
-    color:#ffa500;
-    margin-bottom:30px;
-    text-align:center;
-}
-
+/* CARDS */
 .card{
-    background:rgba(255,140,0,0.04);
-    border:1px solid rgba(255,140,0,0.25);
-    border-radius:20px;
+    background:var(--card);
+    border:1px solid rgba(255,140,0,0.2);
+    border-radius:18px;
     padding:25px;
-    margin-bottom:25px;
-    backdrop-filter:blur(20px);
+    margin:20px 0;
+    backdrop-filter:blur(15px);
     transition:0.3s;
+    animation:fadeUp 0.8s ease both;
 }
 
 .card:hover{
     transform:translateY(-5px);
-    box-shadow:0 0 30px rgba(255,140,0,0.3);
 }
 
-h2{color:#ff8c00;margin-bottom:15px;}
-
-.main-project video{
+/* VIDEO */
+video{
     width:100%;
     border-radius:15px;
     margin-top:15px;
     border:1px solid rgba(255,140,0,0.3);
 }
 
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:15px;
-}
-
-.project{
-    background:#111;
-    padding:15px;
-    border-radius:12px;
-    border:1px solid rgba(255,140,0,0.2);
-}
-
-.reviews{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-}
-
-.review{
-    display:flex;
-    gap:15px;
-    background:#111;
-    padding:15px;
-    border-radius:15px;
-    border:1px solid rgba(255,140,0,0.2);
-}
-
-.review img{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    border:2px solid #ff8c00;
-}
-
-.name{color:#ffa500;font-weight:bold;}
-.stars{color:#ffa500;}
-
-.price{font-size:32px;color:#ffa500;}
-
+/* BUTTON */
 .btn{
     display:inline-block;
-    margin-top:10px;
-    padding:10px 18px;
+    padding:12px 18px;
+    background:linear-gradient(45deg,#ff8c00,#ffa500);
+    color:#000;
     border-radius:10px;
     text-decoration:none;
-    color:#000;
-    background:linear-gradient(45deg,#ff8c00,#ffa500);
     font-weight:bold;
     transition:0.3s;
 }
 
 .btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px #ff8c00;
+    transform:scale(1.08);
+    box-shadow:0 0 25px var(--accent);
 }
 
-.footer{text-align:center;margin-top:40px;opacity:0.5;}
-
-.fixed-btn{
+/* FIXED BUTTON */
+.fixed{
     position:fixed;
     bottom:20px;
     right:20px;
-    background:#ff8c00;
+    background:var(--accent);
     color:#000;
     padding:12px 18px;
     border-radius:50px;
-    text-decoration:none;
     font-weight:bold;
-    box-shadow:0 0 15px #ff8c00;
+    text-decoration:none;
     z-index:999;
 }
+
+/* TOP BUTTONS */
+.topbar{
+    position:fixed;
+    top:15px;
+    right:15px;
+    display:flex;
+    gap:10px;
+    z-index:999;
+}
+
+.topbar button{
+    padding:10px;
+    border-radius:10px;
+    border:1px solid var(--accent);
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+}
+
+/* TERMINAL */
+.terminal{
+    display:none;
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    color:#00ff88;
+    padding:20px;
+    font-family:monospace;
+    z-index:9999;
+}
+
+.terminal.active{
+    display:block;
+}
+
+.cursor{
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{50%{opacity:0;}}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
 </style>
 </head>
 
 <body>
 
-<div id="loader"></div>
-<div id="particles-js"></div>
+<div class="topbar">
+<button onclick="toggleTheme()">🌓</button>
+<button onclick="toggleTerminal()">💻</button>
+</div>
+
+<div class="terminal" id="terminal">
+root@system:~$ loading profile...
+<br>access granted ✔
+<br>identity: good hacker
+<br>status: active
+<br><br>
+root@system:~$ <span class="cursor">█</span>
+</div>
 
 <div class="container">
 
 <img src="o.png" class="logo">
 
 <h1>🧠 Дневник доброго хакера</h1>
-<div class="subtitle">голубоглазый тоннель // я разбираюсь и делаю</div>
-<div id="typing"></div>
+<div class="subtitle">голубоглазый тоннель // system online</div>
 
 <div class="card">
 <h2>⚡ Обо мне</h2>
-<p>Быстро. Чётко. Без лишнего шума. Работаю с обычными и нестандартными задачами.</p>
+<p>Чётко. Быстро. Без шума.</p>
 </div>
 
 <div class="card">
-<h2>🧑‍💻 Кто я</h2>
-<p>
-Не студия. Не агентство.<br>
-Один человек, который реально делает руками.<br><br>
-Есть опыт работы с приватными и чувствительными проектами.
-</p>
-</div>
-
-<div class="card">
-<h2>🎯 Что ты получишь</h2>
-<ul>
-<li>⚡ Решение за 1 день</li>
-<li>🧠 Без лишних вопросов</li>
-<li>💻 Рабочий результат</li>
-<li>🔧 Поддержка</li>
-</ul>
-</div>
-
-<div class="card main-project">
 <h2>🔥 SCREENREC 3D</h2>
-<p>Кастомные инструменты и автоматизация под любые задачи.</p>
+<p>Кастомные инструменты и автоматизация.</p>
 <video controls poster="preview.jpg">
     <source src="video.mp4" type="video/mp4">
 </video>
 </div>
 
 <div class="card">
-<h2>🛠️ Другие проекты</h2>
-<div class="projects">
-<div class="project">EXE сборка Python</div>
-<div class="project">GUI приложения</div>
-<div class="project">OSINT</div>
-<div class="project">Автоматизация</div>
-<div class="project">Стеганография</div>
-<div class="project">Нестандартные решения 🔒</div>
-</div>
-</div>
-
-<div class="card">
-<h2>💬 Отзывы</h2>
-<div class="reviews">
-
-<div class="review">
-<img src="https://randomuser.me/api/portraits/men/32.jpg">
-<div>
-<div class="name">Алексей</div>
-<div class="stars">★★★★★</div>
-<p>Сделал всё за вечер. Работает идеально.</p>
-</div>
-</div>
-
-<div class="review">
-<img src="https://randomuser.me/api/portraits/women/44.jpg">
-<div>
-<div class="name">Марина</div>
-<div class="stars">★★★★★</div>
-<p>Очень быстро и чётко. Рекомендую.</p>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="card">
-<h2>⏳ Ограничение</h2>
-<p>Беру не больше 3 заказов в день.</p>
-</div>
-
-<div class="card">
-<h2>❓ Вопросы</h2>
-<p><b>Сколько по времени?</b><br>Часто в тот же день.</p>
-<p><b>Конфиденциальность?</b><br>Да. Всё приватно.</p>
-<p><b>Сложные задачи?</b><br>Обсуждаем в личке.</p>
+<h2>🛠 Проекты</h2>
+<p>EXE / GUI / OSINT / Automation / Stego</p>
 </div>
 
 <div class="card">
 <h2>💰 Цена</h2>
-<div class="price">от 5$</div>
+<h1 style="font-size:30px;color:var(--accent);">от 5$</h1>
 </div>
 
 <div class="card">
 <h2>📡 Контакт</h2>
-<p>Telegram: @hackpack1977</p>
-<p>Напиши слово <b>"СТАРТ"</b> — отвечу быстрее</p>
-<a href="https://t.me/hackpack1977" class="btn">
-🚀 Написать сейчас (отвечаю быстро)
-</a>
-</div>
-
-<div class="footer">
-<p>не идеальный // но сделаю</p>
+<a class="btn" href="https://t.me/hackpack1977">Написать в Telegram</a>
 </div>
 
 </div>
 
-<a href="https://t.me/hackpack1977" class="fixed-btn">💬 Написать</a>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<a class="fixed" href="https://t.me/hackpack1977">💬 Написать</a>
 
 <script>
-particlesJS("particles-js",{
-  particles:{
-    number:{value:40},
-    color:{value:"#ff8c00"},
-    size:{value:2},
-    move:{speed:1}
-  }
-});
-</script>
-
-<script>
-const text = "доступ получен...";
-let i = 0;
-function type(){
-    if(i < text.length){
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(type, 50);
-    }
+// theme
+function toggleTheme(){
+    document.body.classList.toggle("light");
 }
-type();
+
+// terminal
+function toggleTerminal(){
+    document.getElementById("terminal").classList.toggle("active");
+}
 </script>
 
 </body>
